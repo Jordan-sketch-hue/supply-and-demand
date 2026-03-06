@@ -1,0 +1,16 @@
+{
+  "name": "supply-and-demand",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Supply & Demand - demand-triggered marketplace web scaffold",
+  "scripts": {
+    "dev": "npx vercel dev",
+    "dev:static": "npx serve public -l 4173",
+    "start": "npx serve public -l 4173",
+    "test": "node scripts/smoke-check.js"
+  },
+  "dependencies": {
+    "@vercel/postgres": "^0.10.0",
+    "stripe": "^17.7.0"
+  }
+}

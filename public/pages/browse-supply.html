@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Browse Supply | Supply & Demand</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+  <body>
+    <header class="bg-midnight text-white border-b border-white/10">
+      <nav class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+        <a href="../index.html" class="brand-font font-bold">SUPPLY & DEMAND</a>
+        <div class="hidden md:flex gap-6 text-sm">
+          <a href="./search-demand.html">Search Demand</a>
+          <a href="./categories.html">Categories</a>
+          <a href="./adverts.html">Adverts</a>
+          <a href="./trust-safety.html">Trust & Safety</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <section class="reveal">
+        <h1 class="text-4xl font-bold text-midnight">Browse Supply</h1>
+        <p class="text-slate-600 mt-3">Traditional marketplace browsing with deep filters by price, rating, distance, availability, and verified trust status.</p>
+      </section>
+
+      <section class="grid lg:grid-cols-[280px_1fr] gap-6 mt-8">
+        <aside class="bg-white rounded-2xl p-5 border border-slate-100 reveal h-fit">
+          <h2 class="font-semibold">Filters</h2>
+          <div class="mt-4 space-y-4 text-sm">
+            <div>
+              <p class="font-medium">Category</p>
+              <p class="text-slate-600">Services, Products, Rentals, Gigs</p>
+            </div>
+            <div>
+              <p class="font-medium">Distance</p>
+              <p class="text-slate-600">Within 2 km, 5 km, 10 km</p>
+            </div>
+            <div>
+              <p class="font-medium">Rating</p>
+              <p class="text-slate-600">4.0+, 4.5+, 4.8+</p>
+            </div>
+            <div>
+              <p class="font-medium">Availability</p>
+              <p class="text-slate-600">Now, today, this week</p>
+            </div>
+          </div>
+        </aside>
+
+        <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
+          <article class="bg-white rounded-2xl p-5 border border-slate-100 card-lift reveal">
+            <h3 class="font-semibold">Elite Clean Co.</h3>
+            <p class="text-sm text-slate-600 mt-2">Home cleaning and post-construction cleanup.</p>
+            <div class="mt-3 text-xs text-slate-500">4.9 | 1.8 km | Verified</div>
+          </article>
+          <article class="bg-white rounded-2xl p-5 border border-slate-100 card-lift reveal">
+            <h3 class="font-semibold">BuildCore Materials</h3>
+            <p class="text-sm text-slate-600 mt-2">Wholesale cement, steel, and structural supply.</p>
+            <div class="mt-3 text-xs text-slate-500">B2B Supplier | Same-day dispatch</div>
+          </article>
+          <article class="bg-white rounded-2xl p-5 border border-slate-100 card-lift reveal">
+            <h3 class="font-semibold">MoveFast Gigs</h3>
+            <p class="text-sm text-slate-600 mt-2">Furniture moving, lifting help, quick assembly.</p>
+            <div class="mt-3 text-xs text-slate-500">4.7 | 3.1 km | Instant book</div>
+          </article>
+          <article class="bg-white rounded-2xl p-5 border border-slate-100 card-lift reveal">
+            <h3 class="font-semibold">CityFix Mechanics</h3>
+            <p class="text-sm text-slate-600 mt-2">Diagnostics, brake service, emergency roadside.</p>
+            <div class="mt-3 text-xs text-slate-500">Urgent slots open now</div>
+          </article>
+          <article class="bg-white rounded-2xl p-5 border border-slate-100 card-lift reveal">
+            <h3 class="font-semibold">Prime Rentals Hub</h3>
+            <p class="text-sm text-slate-600 mt-2">Cars, tools, and event equipment rental.</p>
+            <div class="mt-3 text-xs text-slate-500">Flexible terms | Verified IDs</div>
+          </article>
+          <article class="bg-midnight text-white rounded-2xl p-5 card-lift reveal">
+            <h3 class="font-semibold">Boost Visibility</h3>
+            <p class="text-sm text-slate-300 mt-2">Suppliers can promote listings for top category placement and homepage spotlight.</p>
+            <a href="./pricing.html" class="inline-block mt-4 bg-white text-midnight px-4 py-2 rounded-full text-sm font-semibold">See promo plans</a>
+          </article>
+          <div data-ad-slot="browse_grid" class="md:col-span-2 xl:col-span-3"></div>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="../assets/js/main.js"></script>
+    <script type="module">
+      import { initAdSlots } from '../assets/js/widgets/ad-slots.js';
+      initAdSlots();
+    </script>
+  </body>
+</html>

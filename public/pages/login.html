@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | Supply & Demand</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+  <body class="min-h-screen bg-midnight">
+    <main class="max-w-md mx-auto px-4 py-16">
+      <a href="../index.html" class="text-white text-sm">Back to home</a>
+      <div class="bg-white rounded-2xl p-7 mt-4">
+        <h1 class="text-2xl font-bold text-midnight">Login</h1>
+        <form data-login-form class="mt-5 space-y-4">
+          <input name="email" type="email" class="w-full rounded-xl border border-slate-200 px-4 py-3" placeholder="Email" />
+          <input name="password" type="password" class="w-full rounded-xl border border-slate-200 px-4 py-3" placeholder="Password" />
+          <button type="submit" class="w-full grad-btn text-white rounded-xl py-3 font-semibold">Continue</button>
+          <p id="login-status" class="text-sm text-slate-500"></p>
+        </form>
+      </div>
+    </main>
+
+    <script type="module">
+      import { storeSession } from '../assets/js/auth-client.js';
+
+      const form = document.querySelector('[data-login-form]');
+      const status = document.getElementById('login-status');
+      const next = new URLSearchParams(window.location.search).get('next');
+      if (form) {
+        form.addEventListener('submit', async event => {
+          event.preventDefault();
+          const formData = new FormData(form);
+          try {
+            const csrf = localStorage.getItem('sd_csrf') || 'local-preview';
+            const result = await fetch('/api/auth/login', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'x-csrf-token': csrf,
+                'x-csrf-cookie': csrf
+              },
+              body: JSON.stringify({
+                email: String(formData.get('email') || ''),
+                password: String(formData.get('password') || '')
+              })
+            }).then(r => r.json());
+
+            if (result.error) throw new Error(result.error);
+            storeSession(result.token, result.csrfToken);
+            if (status) status.textContent = `Logged in as ${result.user.role}. Redirecting...`;
+            setTimeout(() => {
+              if (next === 'admin-console' && result.user.role === 'admin') {
+                window.location.href = './admin-console.html';
+                return;
+              }
+              window.location.href = result.user.role === 'admin' ? './admin-console.html' : './search-demand.html';
+            }, 700);
+          } catch (error) {
+            if (status) status.textContent = error.message;
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

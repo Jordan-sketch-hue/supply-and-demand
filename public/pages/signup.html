@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup | Supply & Demand</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+  <body class="min-h-screen bg-midnight">
+    <main class="max-w-md mx-auto px-4 py-16">
+      <a href="../index.html" class="text-white text-sm">Back to home</a>
+      <div class="bg-white rounded-2xl p-7 mt-4">
+        <h1 class="text-2xl font-bold text-midnight">Create Account</h1>
+        <p class="text-sm text-slate-600 mt-2">Join as buyer or supplier.</p>
+        <form data-signup-form class="mt-5 space-y-4">
+          <input name="fullName" type="text" class="w-full rounded-xl border border-slate-200 px-4 py-3" placeholder="Full name" />
+          <input name="email" type="email" class="w-full rounded-xl border border-slate-200 px-4 py-3" placeholder="Email" />
+          <input name="password" type="password" class="w-full rounded-xl border border-slate-200 px-4 py-3" placeholder="Password" />
+          <select name="role" class="w-full rounded-xl border border-slate-200 px-4 py-3">
+            <option value="consumer">Consumer</option>
+            <option value="supplier">Supplier</option>
+          </select>
+          <button type="submit" class="w-full grad-btn text-white rounded-xl py-3 font-semibold">Create Account</button>
+          <p id="signup-status" class="text-sm text-slate-500"></p>
+        </form>
+        <div class="mt-4 text-xs text-slate-500">OAuth options: Google, Apple, Facebook, LinkedIn</div>
+      </div>
+    </main>
+
+    <script type="module">
+      import { storeSession } from '../assets/js/auth-client.js';
+
+      const form = document.querySelector('[data-signup-form]');
+      const status = document.getElementById('signup-status');
+      if (form) {
+        form.addEventListener('submit', async event => {
+          event.preventDefault();
+          const formData = new FormData(form);
+          try {
+            const csrf = localStorage.getItem('sd_csrf') || 'local-preview';
+            const response = await fetch('/api/auth/signup', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'x-csrf-token': csrf,
+                'x-csrf-cookie': csrf
+              },
+              body: JSON.stringify({
+                fullName: String(formData.get('fullName') || ''),
+                email: String(formData.get('email') || ''),
+                password: String(formData.get('password') || ''),
+                role: String(formData.get('role') || 'consumer')
+              })
+            });
+            const result = await response.json();
+            if (!response.ok) throw new Error(result.error || 'Signup failed');
+            storeSession(result.token, result.csrfToken);
+            if (status) status.textContent = 'Account created. Redirecting...';
+            setTimeout(() => {
+              window.location.href = './search-demand.html';
+            }, 700);
+          } catch (error) {
+            if (status) status.textContent = error.message;
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

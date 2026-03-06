@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap');
+
+:root {
+  --midnight: #0b132b;
+  --urgent: #ff3b3b;
+  --products: #ff8a00;
+  --gigs: #ffc300;
+  --deals: #2ecc71;
+  --services: #3498db;
+  --b2b: #5b5fef;
+  --rentals: #9b59b6;
+  --bg-light: #f7f9fc;
+  --text-dark: #1f2937;
+  --divider: #e5e7eb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  color: var(--text-dark);
+  background: radial-gradient(100% 70% at 90% -10%, rgba(91, 95, 239, 0.2), transparent 50%),
+    radial-gradient(80% 60% at 10% 10%, rgba(52, 152, 219, 0.2), transparent 45%),
+    var(--bg-light);
+}
+
+h1,
+h2,
+h3,
+h4,
+.brand-font {
+  font-family: 'Sora', sans-serif;
+}
+
+.hero-title {
+  letter-spacing: -0.02em;
+}
+
+.accent-font {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.nav-blur {
+  backdrop-filter: blur(10px);
+  background: rgba(11, 19, 43, 0.82);
+}
+
+.spectrum-ring {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  background: conic-gradient(
+    var(--urgent),
+    var(--products),
+    var(--gigs),
+    var(--deals),
+    var(--services),
+    var(--b2b),
+    var(--rentals),
+    var(--urgent)
+  );
+  padding: 3px;
+}
+
+.spectrum-ring > span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--midnight);
+}
+
+.search-shell {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(11, 19, 43, 0.22);
+}
+
+.search-shell::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(95deg, var(--services), var(--b2b), var(--rentals), var(--urgent));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.grad-btn {
+  background-image: linear-gradient(110deg, var(--services), var(--b2b), var(--rentals));
+  transition: transform 160ms ease, filter 180ms ease;
+}
+
+.grad-btn:hover {
+  filter: brightness(1.12);
+  transform: translateY(-1px);
+}
+
+.card-lift {
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(11, 19, 43, 0.14);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 520ms ease, transform 520ms ease;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.modal-overlay {
+  background: rgba(11, 19, 43, 0.68);
+}
+
+.bg-grid {
+  background-image: linear-gradient(rgba(229, 231, 235, 0.45) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(229, 231, 235, 0.45) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.category-services {
+  border-left: 4px solid var(--services);
+}
+
+.category-products {
+  border-left: 4px solid var(--products);
+}
+
+.category-rentals {
+  border-left: 4px solid var(--rentals);
+}
+
+.category-urgent {
+  border-left: 4px solid var(--urgent);
+}
+
+.category-deals {
+  border-left: 4px solid var(--deals);
+}
+
+.category-b2b {
+  border-left: 4px solid var(--b2b);
+}
+
+.category-gigs {
+  border-left: 4px solid var(--gigs);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 200ms ease;
+}
+
+.faq-item.open .faq-answer {
+  max-height: 320px;
+}
+
+.pulse-dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 999px;
+  background: var(--deals);
+  box-shadow: 0 0 0 rgba(46, 204, 113, 0.55);
+  animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.6);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(46, 204, 113, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+  }
+}

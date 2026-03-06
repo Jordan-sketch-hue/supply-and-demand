@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /pages/admin-console.html
+Sitemap: https://supplyanddemand.com/sitemap.xml

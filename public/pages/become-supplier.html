@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Become a Supplier | Supply & Demand</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+  <body>
+    <header class="bg-midnight text-white border-b border-white/10">
+      <nav class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+        <a href="../index.html" class="brand-font font-bold">SUPPLY & DEMAND</a>
+        <a href="./pricing.html" class="text-sm">Pricing</a>
+      </nav>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <h1 class="text-4xl font-bold text-midnight reveal">Supplier Onboarding System</h1>
+      <p class="text-slate-600 mt-3 max-w-3xl reveal">Eight-step activation flow built for trust, speed, and repeat conversions from active demand streams.</p>
+
+      <div class="grid lg:grid-cols-2 gap-6 mt-8">
+        <section class="bg-white rounded-2xl p-6 border border-slate-100 reveal">
+          <h2 class="text-2xl font-semibold">Activation Flow</h2>
+          <ol class="mt-4 text-sm text-slate-700 space-y-3">
+            <li><strong>1.</strong> Account creation: Email, Google, Apple, Facebook, LinkedIn</li>
+            <li><strong>2.</strong> Profile setup: Name, business, phone, location, service radius</li>
+            <li><strong>3.</strong> Content import: Instagram, TikTok, Facebook, website, portfolio</li>
+            <li><strong>4.</strong> Service setup: Categories, subservices, service area</li>
+            <li><strong>5.</strong> Pricing model: Fixed, hourly, custom quote</li>
+            <li><strong>6.</strong> Verification: License, insurance, trade cert</li>
+            <li><strong>7.</strong> Terms + commission agreement</li>
+            <li><strong>8.</strong> Temporary supplier contract and go-live</li>
+          </ol>
+          <div class="mt-5 text-sm">
+            <p class="font-medium text-midnight">Required legal acceptance:</p>
+            <div class="mt-2 grid gap-2">
+              <a class="text-services" href="./terms-of-service.html">Terms of Service</a>
+              <a class="text-services" href="./supplier-agreement.html">Supplier Agreement</a>
+              <a class="text-services" href="./dispute-escrow-policy.html">Escrow and Dispute Policy</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="bg-midnight text-white rounded-2xl p-6 reveal">
+          <h2 class="text-2xl font-semibold">Launch Form Preview</h2>
+          <div class="mt-4 grid gap-3 text-sm">
+            <input class="rounded-xl px-4 py-3 bg-white/10 border border-white/20" placeholder="Business name" />
+            <input class="rounded-xl px-4 py-3 bg-white/10 border border-white/20" placeholder="Primary category" />
+            <input class="rounded-xl px-4 py-3 bg-white/10 border border-white/20" placeholder="Service city" />
+            <input class="rounded-xl px-4 py-3 bg-white/10 border border-white/20" placeholder="Service radius (km)" />
+            <div class="flex items-center gap-2 mt-2">
+              <input type="checkbox" id="commission" />
+              <label for="commission">I agree to the platform commission structure.</label>
+            </div>
+            <button type="button" class="bg-white text-midnight rounded-full px-5 py-3 font-semibold mt-2">Start Verification</button>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script type="module" src="../assets/js/main.js"></script>
+  </body>
+</html>

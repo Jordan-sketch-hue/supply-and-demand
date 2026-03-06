@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" role="img" aria-label="Supply and Demand logo">
+  <defs>
+    <linearGradient id="spectrum" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff3b3b"/>
+      <stop offset="18%" stop-color="#ff8a00"/>
+      <stop offset="34%" stop-color="#ffc300"/>
+      <stop offset="50%" stop-color="#2ecc71"/>
+      <stop offset="66%" stop-color="#3498db"/>
+      <stop offset="82%" stop-color="#5b5fef"/>
+      <stop offset="100%" stop-color="#9b59b6"/>
+    </linearGradient>
+  </defs>
+  <circle cx="40" cy="40" r="24" fill="none" stroke="url(#spectrum)" stroke-width="7"/>
+  <circle cx="40" cy="40" r="15" fill="#0b132b"/>
+  <text x="78" y="47" font-family="Sora, Inter, sans-serif" font-size="28" font-weight="700" fill="#0b132b">Supply &amp; Demand</text>
+</svg>

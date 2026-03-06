@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Post Request | Supply & Demand</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+  <body>
+    <header class="bg-midnight text-white border-b border-white/10">
+      <nav class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+        <a href="../index.html" class="brand-font font-bold">SUPPLY & DEMAND</a>
+        <a href="./search-demand.html" class="text-sm">Search Demand</a>
+      </nav>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <h1 class="text-4xl font-bold text-midnight reveal">Post Demand Request</h1>
+      <p class="text-slate-600 mt-3 reveal">Create a structured demand ticket for suppliers to respond with fixed price, hourly, or custom quote offers.</p>
+
+      <form data-demand-request-form class="bg-white rounded-2xl p-6 mt-8 border border-slate-100 space-y-5 reveal">
+        <div>
+          <label class="block text-sm font-medium mb-2">What do you need?</label>
+          <input name="rawQuery" type="text" class="w-full rounded-xl border border-slate-200 px-4 py-3" placeholder="I need catering for 120 guests" />
+        </div>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium mb-2">Category</label>
+            <select name="category" class="w-full rounded-xl border border-slate-200 px-4 py-3">
+              <option>Services</option>
+              <option>Products</option>
+              <option>Rentals</option>
+              <option>Urgent Jobs</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-2">Urgency</label>
+            <select name="urgency" class="w-full rounded-xl border border-slate-200 px-4 py-3">
+              <option>Standard</option>
+              <option>Today</option>
+              <option>Urgent - under 2 hours</option>
+            </select>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-3 gap-4">
+          <input name="country" type="text" class="rounded-xl border border-slate-200 px-4 py-3" placeholder="Country" />
+          <input name="city" type="text" class="rounded-xl border border-slate-200 px-4 py-3" placeholder="City" />
+          <input name="neighborhood" type="text" class="rounded-xl border border-slate-200 px-4 py-3" placeholder="Neighborhood" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-2">Details</label>
+          <textarea name="details" rows="4" class="w-full rounded-xl border border-slate-200 px-4 py-3" placeholder="Describe the request, budget range, and expectations"></textarea>
+        </div>
+        <div class="flex items-center gap-2 text-sm">
+          <input type="checkbox" id="legal-ack" required />
+          <label for="legal-ack">I acknowledge platform <a class="text-services" href="./terms-of-service.html">Terms</a> and <a class="text-services" href="./dispute-escrow-policy.html">Escrow Policy</a>.</label>
+        </div>
+        <button type="submit" class="grad-btn text-white rounded-full px-6 py-3 font-semibold">Publish Request</button>
+        <p id="request-status" class="text-sm text-slate-600"></p>
+      </form>
+    </main>
+
+    <script type="module" src="../assets/js/main.js"></script>
+    <script type="module">
+      import { initPostRequestPage } from '../assets/js/demand-engine.js';
+      initPostRequestPage();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Supply & Demand | Search Your Demand</title>
+    <meta
+      name="description"
+      content="Supply & Demand is the spectrum marketplace where users search demand and get matched to trusted local suppliers instantly."
+    />
+    <link rel="icon" type="image/svg+xml" href="./assets/img/favicon.svg" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              midnight: '#0B132B',
+              urgent: '#FF3B3B',
+              products: '#FF8A00',
+              gigs: '#FFC300',
+              deals: '#2ECC71',
+              services: '#3498DB',
+              b2b: '#5B5FEF',
+              rentals: '#9B59B6'
+            },
+            borderRadius: {
+              xl2: '1rem',
+              xl3: '1.25rem'
+            }
+          }
+        }
+      };
+    </script>
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+  </head>
+  <body>
+    <header class="sticky top-0 z-40 nav-blur border-b border-white/10">
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between text-white">
+        <a href="./index.html" class="flex items-center gap-3">
+          <span class="spectrum-ring"><span></span></span>
+          <span class="brand-font font-bold tracking-wide">SUPPLY & DEMAND</span>
+        </a>
+
+        <div class="hidden lg:flex items-center gap-7 text-sm">
+          <a href="./pages/search-demand.html" class="hover:text-services">Search Demand</a>
+          <a href="./pages/browse-supply.html" class="hover:text-products">Browse Supply</a>
+          <a href="./pages/categories.html" class="hover:text-gigs">Categories</a>
+          <a href="./pages/post-request.html" class="hover:text-urgent">Post Request</a>
+          <a href="./pages/become-supplier.html" class="hover:text-deals">Become a Supplier</a>
+          <a href="./pages/adverts.html" class="hover:text-products">Adverts</a>
+          <a href="./pages/trust-safety.html" class="hover:text-services">Trust & Safety</a>
+          <a href="./pages/legal-center.html" class="hover:text-slate-300">Legal</a>
+          <a href="./pages/pricing.html" class="hover:text-rentals">Pricing</a>
+          <a href="./pages/login.html" class="px-4 py-2 rounded-full border border-white/30">Login</a>
+          <a href="./pages/signup.html" class="px-4 py-2 rounded-full bg-white text-midnight font-semibold">Signup</a>
+        </div>
+
+        <button
+          type="button"
+          data-mobile-toggle
+          aria-expanded="false"
+          class="lg:hidden inline-flex items-center justify-center rounded-md border border-white/30 px-3 py-2"
+        >
+          Menu
+        </button>
+      </nav>
+
+      <div data-mobile-menu class="hidden lg:hidden border-t border-white/10 px-4 py-4 text-white bg-midnight">
+        <div class="grid gap-3 text-sm">
+          <a href="./pages/search-demand.html">Search Demand</a>
+          <a href="./pages/browse-supply.html">Browse Supply</a>
+          <a href="./pages/categories.html">Categories</a>
+          <a href="./pages/post-request.html">Post Request</a>
+          <a href="./pages/become-supplier.html">Become a Supplier</a>
+          <a href="./pages/adverts.html">Adverts</a>
+          <a href="./pages/how-it-works.html">How It Works</a>
+          <a href="./pages/trust-safety.html">Trust & Safety</a>
+          <a href="./pages/legal-center.html">Legal Center</a>
+          <a href="./pages/pricing.html">Pricing</a>
+          <a href="./pages/login.html">Login</a>
+          <a href="./pages/signup.html">Signup</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="relative overflow-hidden bg-midnight text-white">
+        <div class="absolute inset-0 bg-grid opacity-20"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 relative">
+          <p class="accent-font text-sm uppercase tracking-[0.25em] text-white/75 reveal">The Spectrum Marketplace</p>
+          <h1 class="hero-title text-4xl md:text-6xl font-extrabold mt-4 max-w-4xl reveal">
+            Search Your Demand. Own the Spectrum of Commerce.
+          </h1>
+          <p class="text-lg text-slate-200 mt-5 max-w-2xl reveal">
+            Stop browsing noisy listings. Tell the platform what you need, where you need it, and when you need it. Supply & Demand finds trusted suppliers instantly.
+          </p>
+
+          <form data-demand-form class="search-shell bg-white mt-10 max-w-4xl reveal" aria-label="Demand search form">
+            <div class="grid md:grid-cols-[1fr_auto] gap-2 p-2">
+              <input
+                type="text"
+                name="demand"
+                placeholder="I need a plumber in Kingston today"
+                class="w-full px-5 py-4 rounded-xl text-slate-800 outline-none text-base"
+                required
+              />
+              <button type="submit" class="grad-btn text-white rounded-xl px-8 py-4 font-semibold">Find Supply</button>
+            </div>
+          </form>
+
+          <div class="flex flex-wrap items-center gap-3 mt-5 text-sm text-slate-200 reveal">
+            <span>Try:</span>
+            <a class="underline decoration-services" href="./pages/search-demand.html?q=I%20need%20a%20mechanic">Find me a mechanic</a>
+            <a class="underline decoration-products" href="./pages/search-demand.html?q=I%20need%20catering">I need catering</a>
+            <a class="underline decoration-rentals" href="./pages/search-demand.html?q=Rent%20party%20equipment">Rent party equipment</a>
+          </div>
+
+          <div class="mt-10 flex flex-wrap gap-3 reveal">
+            <a href="./pages/search-demand.html" class="grad-btn text-white px-6 py-3 rounded-full font-semibold">Search Demand</a>
+            <a href="./pages/post-request.html" class="px-6 py-3 rounded-full border border-white/40">Post Demand</a>
+            <a href="./pages/become-supplier.html" class="px-6 py-3 rounded-full border border-white/40">Become a Supplier</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="flex items-center justify-between reveal">
+          <h2 class="text-3xl font-bold text-midnight">Spectrum Categories</h2>
+          <a href="./pages/categories.html" class="text-sm font-semibold text-services">Explore all categories</a>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
+          <a class="card-lift reveal bg-white rounded-2xl p-5 category-services" href="./pages/categories-services.html"><h3 class="font-semibold">Services</h3><p class="text-sm text-slate-600 mt-1">Home, auto, legal, IT, health.</p></a>
+          <a class="card-lift reveal bg-white rounded-2xl p-5 category-products" href="./pages/categories-products.html"><h3 class="font-semibold">Products</h3><p class="text-sm text-slate-600 mt-1">Electronics, furniture, tools, groceries.</p></a>
+          <a class="card-lift reveal bg-white rounded-2xl p-5 category-rentals" href="./pages/categories-rentals.html"><h3 class="font-semibold">Rentals</h3><p class="text-sm text-slate-600 mt-1">Vehicles, equipment, properties.</p></a>
+          <a class="card-lift reveal bg-white rounded-2xl p-5 category-urgent" href="./pages/categories-urgent-jobs.html"><h3 class="font-semibold">Urgent Jobs</h3><p class="text-sm text-slate-600 mt-1">Emergency and same-day requests.</p></a>
+          <a class="card-lift reveal bg-white rounded-2xl p-5 category-deals" href="./pages/categories-local-deals.html"><h3 class="font-semibold">Local Deals</h3><p class="text-sm text-slate-600 mt-1">Best-value nearby offers.</p></a>
+          <a class="card-lift reveal bg-white rounded-2xl p-5 category-b2b" href="./pages/categories-b2b-supply.html"><h3 class="font-semibold">B2B Supply</h3><p class="text-sm text-slate-600 mt-1">Wholesale and enterprise sourcing.</p></a>
+          <a class="card-lift reveal bg-white rounded-2xl p-5 category-gigs" href="./pages/categories-gigs.html"><h3 class="font-semibold">Gigs</h3><p class="text-sm text-slate-600 mt-1">Quick tasks and flexible jobs.</p></a>
+        </div>
+      </section>
+
+      <section class="bg-white border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid lg:grid-cols-2 gap-8">
+          <div class="reveal">
+            <div class="flex items-center gap-2 text-sm text-deals font-semibold"><span class="pulse-dot"></span> Live Demand Map</div>
+            <h2 class="text-3xl font-bold mt-3 text-midnight">Real-time requests across your cities</h2>
+            <p class="text-slate-600 mt-4">Demand-first discovery highlights where money is moving now, so suppliers can chase active demand, not guesswork.</p>
+            <ul class="mt-6 space-y-3 text-sm">
+              <li class="bg-slate-50 p-3 rounded-xl">Plumber needed in Kingston - 12 minutes ago</li>
+              <li class="bg-slate-50 p-3 rounded-xl">Car mechanic needed in Montego Bay - 22 minutes ago</li>
+              <li class="bg-slate-50 p-3 rounded-xl">Graphic designer needed in Miami - 29 minutes ago</li>
+            </ul>
+          </div>
+
+          <div class="reveal bg-midnight text-white rounded-2xl p-7">
+            <h3 class="text-2xl font-bold">How It Works</h3>
+            <ol class="mt-5 space-y-4 text-slate-200">
+              <li><strong>1.</strong> Search your demand in natural language.</li>
+              <li><strong>2.</strong> AI parses service, location, and urgency.</li>
+              <li><strong>3.</strong> Book top matches with escrow protection.</li>
+            </ol>
+            <a href="./pages/how-it-works.html" class="inline-block mt-6 grad-btn rounded-full px-5 py-3 font-semibold">See full flow</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid lg:grid-cols-2 gap-6">
+        <article class="bg-white rounded-2xl p-7 card-lift reveal">
+          <h3 class="text-2xl font-bold text-midnight">Trust Layer</h3>
+          <p class="text-slate-600 mt-3">Disputes, escrow, verification, completion proofs, and fraud detection form a single trust infrastructure designed for local commerce at scale.</p>
+          <a href="./pages/trust-safety.html" class="inline-block mt-5 text-services font-semibold">Explore Trust & Safety</a>
+        </article>
+        <article class="bg-midnight text-white rounded-2xl p-7 card-lift reveal">
+          <h3 class="text-2xl font-bold">Turn Your Skills Into Demand</h3>
+          <p class="text-slate-200 mt-3">Supplier onboarding imports your social proof, verifies your credentials, and launches your profile into active demand streams.</p>
+          <button data-modal-open class="inline-block mt-5 bg-white text-midnight font-semibold px-5 py-3 rounded-full">Become a Supplier</button>
+        </article>
+      </section>
+
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 reveal">
+        <div data-ad-slot="homepage_mid"></div>
+      </section>
+
+      <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-20">
+        <h2 class="text-3xl font-bold text-midnight text-center reveal">Frequently Asked Questions</h2>
+        <div class="mt-8 space-y-3">
+          <div class="faq-item reveal bg-white rounded-xl p-4">
+            <button data-faq-trigger aria-expanded="false" class="w-full text-left font-semibold">How does demand search differ from normal marketplaces?</button>
+            <div class="faq-answer"><p class="pt-3 text-sm text-slate-600">Demand search starts with intent, not listings. You describe the need and the platform matches suppliers by fit, trust score, proximity, and availability.</p></div>
+          </div>
+          <div class="faq-item reveal bg-white rounded-xl p-4">
+            <button data-faq-trigger aria-expanded="false" class="w-full text-left font-semibold">How do payouts work with escrow?</button>
+            <div class="faq-answer"><p class="pt-3 text-sm text-slate-600">Customers prepay into escrow. Funds release when both parties confirm completion or after dispute resolution.</p></div>
+          </div>
+          <div class="faq-item reveal bg-white rounded-xl p-4">
+            <button data-faq-trigger aria-expanded="false" class="w-full text-left font-semibold">Can product sellers and service providers both join?</button>
+            <div class="faq-answer"><p class="pt-3 text-sm text-slate-600">Yes. Supply & Demand is designed for services, products, rentals, gigs, local deals, and B2B sourcing under one spectrum system.</p></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-midnight text-slate-200 border-t border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid md:grid-cols-4 gap-6 text-sm">
+        <div>
+          <p class="brand-font text-white font-semibold">Supply & Demand</p>
+          <p class="mt-2 text-slate-400">Where Need Meets Supply.</p>
+        </div>
+        <div>
+          <p class="text-white font-semibold">Marketplace</p>
+          <div class="mt-2 grid gap-2">
+            <a href="./pages/search-demand.html">Search Demand</a>
+            <a href="./pages/browse-supply.html">Browse Supply</a>
+            <a href="./pages/categories.html">Categories</a>
+          </div>
+        </div>
+        <div>
+          <p class="text-white font-semibold">Suppliers</p>
+          <div class="mt-2 grid gap-2">
+            <a href="./pages/become-supplier.html">Become a Supplier</a>
+            <a href="./pages/adverts.html">Advertise</a>
+            <a href="./pages/pricing.html">Pricing</a>
+            <a href="./pages/trust-safety.html">Trust & Safety</a>
+          </div>
+        </div>
+        <div>
+          <p class="text-white font-semibold">Account</p>
+          <div class="mt-2 grid gap-2">
+            <a href="./pages/login.html">Login</a>
+            <a href="./pages/signup.html">Signup</a>
+            <a href="./pages/legal-center.html">Legal Center</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div data-modal class="hidden fixed inset-0 z-50 modal-overlay px-4 py-8">
+      <div class="max-w-lg mx-auto bg-white rounded-2xl p-6 mt-16">
+        <div class="flex items-start justify-between gap-3">
+          <h3 class="text-2xl font-bold text-midnight">Supplier Activation Sprint</h3>
+          <button data-modal-close class="text-slate-500">Close</button>
+        </div>
+        <p class="text-sm text-slate-600 mt-2">Start in under 8 minutes. Import your social content, verify credentials, and publish to live demand streams.</p>
+        <a href="./pages/become-supplier.html" class="grad-btn text-white rounded-full px-5 py-3 inline-block mt-5 font-semibold">Begin Onboarding</a>
+      </div>
+    </div>
+
+    <script type="module" src="./assets/js/main.js"></script>
+    <script type="module">
+      import { initAdSlots } from './assets/js/widgets/ad-slots.js';
+      initAdSlots();
+    </script>
+  </body>
+</html>

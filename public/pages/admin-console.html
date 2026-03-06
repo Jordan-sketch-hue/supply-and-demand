@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Admin Console | Supply & Demand</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+  <body>
+    <header class="bg-midnight text-white border-b border-white/10">
+      <nav class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+        <a href="../index.html" class="brand-font font-bold">SUPPLY & DEMAND</a>
+        <a href="./legal-center.html" class="text-sm">Legal</a>
+      </nav>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <h1 class="text-4xl font-bold text-midnight">Admin Trust Console</h1>
+      <p class="text-slate-600 mt-2">Disputes, fraud signals, verification reviews, and advert governance.</p>
+      <p id="admin-status" class="text-sm text-slate-500 mt-3">Loading admin session...</p>
+
+      <section id="admin-shell" class="hidden">
+      <section class="bg-white rounded-2xl border border-slate-100 p-5 mt-6">
+        <h2 class="text-xl font-semibold">Trust Queue</h2>
+        <div class="overflow-x-auto mt-4">
+          <table class="w-full text-sm">
+            <thead class="text-left text-slate-500">
+              <tr>
+                <th class="py-2 pr-3">Type</th>
+                <th class="py-2 pr-3">Summary</th>
+                <th class="py-2 pr-3">Severity</th>
+                <th class="py-2 pr-3">Status</th>
+                <th class="py-2">Reference</th>
+              </tr>
+            </thead>
+            <tbody id="trust-case-rows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="bg-white rounded-2xl border border-slate-100 p-5 mt-6">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <h2 class="text-xl font-semibold">Advert Submissions</h2>
+          <form data-advert-filter-form class="flex flex-wrap gap-2">
+            <input name="q" class="rounded-lg border border-slate-200 px-3 py-2 text-sm" placeholder="Search company or email" />
+            <select name="placement" class="rounded-lg border border-slate-200 px-3 py-2 text-sm">
+              <option value="">Any placement</option>
+              <option value="homepage_hero">Homepage Hero</option>
+              <option value="homepage_mid">Homepage Mid</option>
+              <option value="search_sidebar">Search Sidebar</option>
+              <option value="browse_grid">Browse Grid</option>
+              <option value="category_feature">Category Feature</option>
+              <option value="supplier_cta">Supplier CTA</option>
+              <option value="footer_brand">Footer Brand</option>
+            </select>
+            <select name="status" class="rounded-lg border border-slate-200 px-3 py-2 text-sm">
+              <option value="">Any status</option>
+              <option value="pending">Pending</option>
+              <option value="approved">Approved</option>
+              <option value="rejected">Rejected</option>
+              <option value="live">Live</option>
+              <option value="paused">Paused</option>
+            </select>
+            <input name="from" type="date" class="rounded-lg border border-slate-200 px-3 py-2 text-sm" />
+            <input name="to" type="date" class="rounded-lg border border-slate-200 px-3 py-2 text-sm" />
+            <button type="submit" class="rounded-lg border border-slate-300 px-3 py-2 text-sm">Filter</button>
+          </form>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2 mt-4">
+          <button type="button" data-advert-bulk="approved" class="text-xs rounded-full border px-3 py-1">Bulk Approve</button>
+          <button type="button" data-advert-bulk="rejected" class="text-xs rounded-full border px-3 py-1">Bulk Reject</button>
+          <button type="button" data-advert-bulk="live" class="text-xs rounded-full border px-3 py-1">Bulk Go Live</button>
+        </div>
+
+        <div class="overflow-x-auto mt-4">
+          <table class="w-full text-sm">
+            <thead class="text-left text-slate-500">
+              <tr>
+                <th class="py-2 pr-3"><input id="adverts-select-all" type="checkbox" /></th>
+                <th class="py-2 pr-3">Company</th>
+                <th class="py-2 pr-3">Category</th>
+                <th class="py-2 pr-3">Placement</th>
+                <th class="py-2 pr-3">Status</th>
+                <th class="py-2 pr-3">Budget</th>
+                <th class="py-2">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="adverts-rows"></tbody>
+          </table>
+        </div>
+        <div class="flex items-center justify-between mt-3 text-sm text-slate-600">
+          <p id="adverts-page-meta"></p>
+          <div class="flex gap-2">
+            <button type="button" id="adverts-prev" class="rounded-lg border border-slate-300 px-3 py-1">Prev</button>
+            <button type="button" id="adverts-next" class="rounded-lg border border-slate-300 px-3 py-1">Next</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-white rounded-2xl border border-slate-100 p-5 mt-6">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <h2 class="text-xl font-semibold">Verification Documents</h2>
+          <form data-doc-filter-form class="flex flex-wrap gap-2">
+            <input name="q" class="rounded-lg border border-slate-200 px-3 py-2 text-sm" placeholder="Search business, email, doc type" />
+            <select name="status" class="rounded-lg border border-slate-200 px-3 py-2 text-sm">
+              <option value="">Any status</option>
+              <option value="pending">Pending</option>
+              <option value="approved">Approved</option>
+              <option value="rejected">Rejected</option>
+            </select>
+            <input name="from" type="date" class="rounded-lg border border-slate-200 px-3 py-2 text-sm" />
+            <input name="to" type="date" class="rounded-lg border border-slate-200 px-3 py-2 text-sm" />
+            <button type="submit" class="rounded-lg border border-slate-300 px-3 py-2 text-sm">Filter</button>
+          </form>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2 mt-4">
+          <button type="button" data-doc-bulk="approved" class="text-xs rounded-full border px-3 py-1">Bulk Approve</button>
+          <button type="button" data-doc-bulk="rejected" class="text-xs rounded-full border px-3 py-1">Bulk Reject</button>
+        </div>
+
+        <div class="overflow-x-auto mt-4">
+          <table class="w-full text-sm">
+            <thead class="text-left text-slate-500">
+              <tr>
+                <th class="py-2 pr-3"><input id="docs-select-all" type="checkbox" /></th>
+                <th class="py-2 pr-3">Business</th>
+                <th class="py-2 pr-3">Doc Type</th>
+                <th class="py-2 pr-3">Status</th>
+                <th class="py-2 pr-3">File</th>
+                <th class="py-2">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="verification-rows"></tbody>
+          </table>
+        </div>
+        <div class="flex items-center justify-between mt-3 text-sm text-slate-600">
+          <p id="docs-page-meta"></p>
+          <div class="flex gap-2">
+            <button type="button" id="docs-prev" class="rounded-lg border border-slate-300 px-3 py-1">Prev</button>
+            <button type="button" id="docs-next" class="rounded-lg border border-slate-300 px-3 py-1">Next</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-white rounded-2xl border border-slate-100 p-5 mt-6">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <h2 class="text-xl font-semibold">Audit Log</h2>
+          <form data-audit-filter-form class="flex flex-wrap gap-2">
+            <input name="q" class="rounded-lg border border-slate-200 px-3 py-2 text-sm" placeholder="Search actor email or entity id" />
+            <input name="action" class="rounded-lg border border-slate-200 px-3 py-2 text-sm" placeholder="Action" />
+            <select name="entityType" class="rounded-lg border border-slate-200 px-3 py-2 text-sm">
+              <option value="">Any entity</option>
+              <option value="advert">Advert</option>
+              <option value="verification_document">Verification Document</option>
+            </select>
+            <input name="from" type="date" class="rounded-lg border border-slate-200 px-3 py-2 text-sm" />
+            <input name="to" type="date" class="rounded-lg border border-slate-200 px-3 py-2 text-sm" />
+            <button type="submit" class="rounded-lg border border-slate-300 px-3 py-2 text-sm">Filter</button>
+          </form>
+        </div>
+
+        <div class="overflow-x-auto mt-4">
+          <table class="w-full text-sm">
+            <thead class="text-left text-slate-500">
+              <tr>
+                <th class="py-2 pr-3">When</th>
+                <th class="py-2 pr-3">Actor</th>
+                <th class="py-2 pr-3">Action</th>
+                <th class="py-2 pr-3">Entity</th>
+                <th class="py-2 pr-3">Entity ID</th>
+                <th class="py-2">Details</th>
+              </tr>
+            </thead>
+            <tbody id="audit-rows"></tbody>
+          </table>
+        </div>
+        <div class="flex items-center justify-between mt-3 text-sm text-slate-600">
+          <p id="audit-page-meta"></p>
+          <div class="flex gap-2">
+            <button type="button" id="audit-prev" class="rounded-lg border border-slate-300 px-3 py-1">Prev</button>
+            <button type="button" id="audit-next" class="rounded-lg border border-slate-300 px-3 py-1">Next</button>
+          </div>
+        </div>
+      </section>
+      </section>
+    </main>
+
+    <script type="module" src="../assets/js/main.js"></script>
+    <script type="module">
+      import { initAdminConsole } from '../assets/js/admin-console.js';
+      initAdminConsole();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adverts | Supply & Demand</title>
+    <meta name="description" content="Branded advertising marketplace for Supply & Demand with categorized placements and campaign submission intake." />
+    <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+  <body>
+    <header class="bg-midnight text-white border-b border-white/10">
+      <nav class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+        <a href="../index.html" class="brand-font font-bold">SUPPLY & DEMAND</a>
+        <div class="text-sm flex gap-5">
+          <a href="./pricing.html">Pricing</a>
+          <a href="./legal-center.html">Legal</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <section class="reveal">
+        <p class="accent-font text-xs uppercase tracking-[0.2em] text-slate-500">Brand Growth Engine</p>
+        <h1 class="text-4xl font-bold text-midnight mt-2">Advert Marketplace</h1>
+        <p class="text-slate-600 mt-3 max-w-3xl">
+          Launch branded campaigns across high-intent demand flows. Placements are categorized by context, audience behavior, and conversion priority.
+        </p>
+      </section>
+
+      <section class="grid lg:grid-cols-[1.2fr_1fr] gap-6 mt-8">
+        <article class="bg-white rounded-2xl p-6 border border-slate-100 reveal">
+          <h2 class="text-xl font-semibold text-midnight">Placement Inventory</h2>
+          <p class="text-sm text-slate-600 mt-2">Optimal spaces mapped sitewide for intent capture.</p>
+          <ul id="placements-grid" class="grid sm:grid-cols-2 gap-3 mt-4 text-sm"></ul>
+        </article>
+
+        <article class="bg-midnight text-white rounded-2xl p-6 reveal">
+          <h2 class="text-xl font-semibold">Source-Informed Campaign Intake</h2>
+          <p class="text-sm text-slate-200 mt-2">
+            Structure inspired by high-performing patterns from commerce channels (Marketplace, classified listings, search ads, social lead forms).
+          </p>
+          <ul class="mt-4 text-sm text-slate-200 space-y-2">
+            <li>Audience objective and conversion event</li>
+            <li>Creative summary and CTA strength</li>
+            <li>Location and budget constraints</li>
+            <li>Placement intent alignment</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="bg-white rounded-2xl p-6 border border-slate-100 mt-8 reveal">
+        <h2 class="text-2xl font-semibold text-midnight">Submit Advert Request</h2>
+        <p class="text-sm text-slate-600 mt-2">Request review for campaign approval and placement scheduling.</p>
+
+        <form data-ad-submit-form class="mt-5 grid md:grid-cols-2 gap-4">
+          <input name="companyName" class="rounded-xl border border-slate-200 px-4 py-3" placeholder="Company name" required />
+          <input name="contactName" class="rounded-xl border border-slate-200 px-4 py-3" placeholder="Contact name" />
+          <input name="contactEmail" type="email" class="rounded-xl border border-slate-200 px-4 py-3" placeholder="Contact email" required />
+          <input name="contactPhone" class="rounded-xl border border-slate-200 px-4 py-3" placeholder="Contact phone" />
+          <select name="adCategory" class="rounded-xl border border-slate-200 px-4 py-3">
+            <option>Local Services</option>
+            <option>Products</option>
+            <option>Rentals</option>
+            <option>B2B Supply</option>
+            <option>Gigs</option>
+          </select>
+          <input name="targetCity" class="rounded-xl border border-slate-200 px-4 py-3" placeholder="Target city" />
+          <input name="budgetUsd" type="number" min="0" class="rounded-xl border border-slate-200 px-4 py-3" placeholder="Budget (USD)" />
+          <select name="sourceChannel" class="rounded-xl border border-slate-200 px-4 py-3">
+            <option value="">Source channel</option>
+            <option>Facebook Marketplace</option>
+            <option>Google Search Ads</option>
+            <option>Instagram Ads</option>
+            <option>Classified Listing</option>
+            <option>Direct Brand Campaign</option>
+          </select>
+          <select name="placement" class="rounded-xl border border-slate-200 px-4 py-3 md:col-span-2"></select>
+          <textarea name="objective" rows="3" class="rounded-xl border border-slate-200 px-4 py-3 md:col-span-2" placeholder="Primary objective (leads, bookings, calls, purchases)" required></textarea>
+          <textarea name="creativeSummary" rows="3" class="rounded-xl border border-slate-200 px-4 py-3 md:col-span-2" placeholder="Creative summary and CTA"></textarea>
+          <input name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+          <div class="md:col-span-2 flex items-center gap-2 text-sm">
+            <input type="checkbox" id="ads-legal" required />
+            <label for="ads-legal">I accept the platform advertising policies and legal terms.</label>
+          </div>
+          <div class="md:col-span-2 flex items-center gap-3">
+            <button type="submit" class="grad-btn text-white rounded-full px-6 py-3 font-semibold">Submit Advert</button>
+            <p id="ad-submit-status" class="text-sm text-slate-600"></p>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <script type="module" src="../assets/js/main.js"></script>
+    <script type="module">
+      import { initAdvertsPage } from '../assets/js/adverts-page.js';
+      initAdvertsPage();
+    </script>
+  </body>
+</html>
