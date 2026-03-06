@@ -1,5 +1,5 @@
-const { json, methodNotAllowed, withApiGuard } = require('./_lib/http');
-const { hasDatabase } = require('./_lib/db');
+const { json, methodNotAllowed, withApiGuard } = require('../server/lib/http');
+const { hasDatabase } = require('../server/lib/db');
 
 module.exports = withApiGuard(async function handler(req, res) {
   if (req.method !== 'GET') {

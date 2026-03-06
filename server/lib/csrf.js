@@ -12,7 +12,6 @@ function validateCsrf(req) {
 
   const headerToken = req.headers['x-csrf-token'];
   const cookieToken = req.headers['x-csrf-cookie'];
-
   if (!headerToken || !cookieToken) {
     return false;
   }

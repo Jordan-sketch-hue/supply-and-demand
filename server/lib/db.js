@@ -241,14 +241,7 @@ async function runBootstrap() {
   }
 }
 
-async function writeAdminAuditLog({
-  actorUserId,
-  actorEmail,
-  action,
-  entityType,
-  entityId,
-  details
-}) {
+async function writeAdminAuditLog({ actorUserId, actorEmail, action, entityType, entityId, details }) {
   await sql`
     insert into admin_audit_logs (actor_user_id, actor_email, action, entity_type, entity_id, details)
     values (

@@ -1,8 +1,14 @@
-const { json, methodNotAllowed, withApiGuard } = require('../_lib/http');
-const { hasDatabase, sql } = require('../_lib/db');
-const { requireUser, canAccessRole } = require('../_lib/auth');
+const { json, methodNotAllowed, withApiGuard } = require('../server/lib/http');
+const { hasDatabase, sql } = require('../server/lib/db');
+const { requireUser, canAccessRole } = require('../server/lib/auth');
 
 module.exports = withApiGuard(async function handler(req, res) {
+  const op = String(req.query.op || '').trim();
+  if (op !== 'metrics') {
+    json(res, 404, { error: 'Unknown ops operation' });
+    return;
+  }
+
   if (req.method !== 'GET') {
     methodNotAllowed(res, ['GET']);
     return;
@@ -15,12 +21,7 @@ module.exports = withApiGuard(async function handler(req, res) {
   }
 
   if (!hasDatabase()) {
-    json(res, 200, {
-      mode: 'mock',
-      uptimeSeconds: Math.round(process.uptime()),
-      nodeVersion: process.version,
-      now: new Date().toISOString()
-    });
+    json(res, 200, { mode: 'mock', uptimeSeconds: Math.round(process.uptime()), nodeVersion: process.version, now: new Date().toISOString() });
     return;
   }
 
@@ -42,4 +43,4 @@ module.exports = withApiGuard(async function handler(req, res) {
       openTrustCases: trustCases.rows[0].total
     }
   });
-}, { rateLimitKey: 'ops-metrics', rateLimitMax: 50 });
+}, { rateLimitKey: 'ops-group', rateLimitMax: 50 });

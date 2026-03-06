@@ -16,21 +16,20 @@ function rateLimit({ req, res, keyPrefix, max = 60, windowMs = 60_000 }) {
 
   if (!current || now > current.resetAt) {
     buckets.set(key, { count: 1, resetAt: now + windowMs });
-    return { allowed: true, remaining: max - 1 };
+    return { allowed: true };
   }
 
   if (current.count >= max) {
     const retryAfter = Math.ceil((current.resetAt - now) / 1000);
     res.setHeader('Retry-After', String(retryAfter));
-    return { allowed: false, remaining: 0, retryAfter };
+    return { allowed: false, retryAfter };
   }
 
   current.count += 1;
   buckets.set(key, current);
-  return { allowed: true, remaining: max - current.count };
+  return { allowed: true };
 }
 
 module.exports = {
-  rateLimit,
-  getClientIp
+  rateLimit
 };

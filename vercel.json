@@ -27,6 +27,114 @@
   ],
   "rewrites": [
     {
+      "source": "/api/demand-search",
+      "destination": "/api/demand?op=search"
+    },
+    {
+      "source": "/api/demand-request",
+      "destination": "/api/demand?op=request"
+    },
+    {
+      "source": "/api/trending-demands",
+      "destination": "/api/demand?op=trending"
+    },
+    {
+      "source": "/api/auth/signup",
+      "destination": "/api/auth?op=signup"
+    },
+    {
+      "source": "/api/auth/login",
+      "destination": "/api/auth?op=login"
+    },
+    {
+      "source": "/api/auth/me",
+      "destination": "/api/auth?op=me"
+    },
+    {
+      "source": "/api/auth/logout",
+      "destination": "/api/auth?op=logout"
+    },
+    {
+      "source": "/api/ads/placements",
+      "destination": "/api/ads?op=placements"
+    },
+    {
+      "source": "/api/ads/list",
+      "destination": "/api/ads?op=list"
+    },
+    {
+      "source": "/api/ads/submit",
+      "destination": "/api/ads?op=submit"
+    },
+    {
+      "source": "/api/bookings/list",
+      "destination": "/api/bookings?op=list"
+    },
+    {
+      "source": "/api/bookings/create",
+      "destination": "/api/bookings?op=create"
+    },
+    {
+      "source": "/api/bookings/status",
+      "destination": "/api/bookings?op=status"
+    },
+    {
+      "source": "/api/messages/thread",
+      "destination": "/api/messages?op=thread"
+    },
+    {
+      "source": "/api/messages/send",
+      "destination": "/api/messages?op=send"
+    },
+    {
+      "source": "/api/suppliers/onboarding",
+      "destination": "/api/suppliers?op=onboarding"
+    },
+    {
+      "source": "/api/suppliers/documents",
+      "destination": "/api/suppliers?op=documents"
+    },
+    {
+      "source": "/api/payments/create-intent",
+      "destination": "/api/payments?op=create-intent"
+    },
+    {
+      "source": "/api/payments/webhook",
+      "destination": "/api/payments?op=webhook"
+    },
+    {
+      "source": "/api/admin/bootstrap",
+      "destination": "/api/admin?op=bootstrap"
+    },
+    {
+      "source": "/api/admin/trust-queue",
+      "destination": "/api/admin?op=trust-queue"
+    },
+    {
+      "source": "/api/admin/adverts",
+      "destination": "/api/admin?op=adverts"
+    },
+    {
+      "source": "/api/admin/verification-docs",
+      "destination": "/api/admin?op=verification-docs"
+    },
+    {
+      "source": "/api/admin/review-advert",
+      "destination": "/api/admin?op=review-advert"
+    },
+    {
+      "source": "/api/admin/review-verification",
+      "destination": "/api/admin?op=review-verification"
+    },
+    {
+      "source": "/api/admin/audit-logs",
+      "destination": "/api/admin?op=audit-logs"
+    },
+    {
+      "source": "/api/ops/metrics",
+      "destination": "/api/ops?op=metrics"
+    },
+    {
       "source": "/",
       "destination": "/index.html"
     }

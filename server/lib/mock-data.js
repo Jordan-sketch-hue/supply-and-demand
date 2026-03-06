@@ -31,6 +31,4 @@ const suppliers = [
   }
 ];
 
-module.exports = {
-  suppliers
-};
+module.exports = { suppliers };

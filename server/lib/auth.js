@@ -10,9 +10,7 @@ function hashPassword(password, salt = crypto.randomBytes(16).toString('hex')) {
 
 function verifyPassword(password, storedValue) {
   const [salt, knownHash] = String(storedValue || '').split(':');
-  if (!salt || !knownHash) {
-    return false;
-  }
+  if (!salt || !knownHash) return false;
   const attempted = crypto.pbkdf2Sync(password, salt, 100_000, 32, 'sha256').toString('hex');
   return crypto.timingSafeEqual(Buffer.from(attempted), Buffer.from(knownHash));
 }
@@ -27,17 +25,13 @@ function hashSessionToken(token) {
 
 function getBearerToken(req) {
   const authHeader = req.headers.authorization || '';
-  if (!authHeader.startsWith('Bearer ')) {
-    return null;
-  }
+  if (!authHeader.startsWith('Bearer ')) return null;
   return authHeader.slice('Bearer '.length).trim();
 }
 
 async function requireUser(req) {
   const token = getBearerToken(req);
-  if (!token || !hasDatabase()) {
-    return null;
-  }
+  if (!token || !hasDatabase()) return null;
 
   const tokenHash = hashSessionToken(token);
   const result = await sql`
@@ -48,7 +42,6 @@ async function requireUser(req) {
       and s.expires_at > now()
     limit 1;
   `;
-
   return result.rows[0] || null;
 }
 
