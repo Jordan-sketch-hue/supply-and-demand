@@ -3,6 +3,14 @@ const { hasDatabase, sql } = require('../server/lib/db');
 const { requireUser } = require('../server/lib/auth');
 const { validateCsrf } = require('../server/lib/csrf');
 
+
+// PayPal SDK placeholder
+let paypal = null;
+if (process.env.PAYPAL_CLIENT_ID && process.env.PAYPAL_SECRET_KEY) {
+  // In real implementation, require PayPal SDK and initialize here
+  paypal = { stub: true };
+}
+
 let stripe = null;
 if (process.env.STRIPE_SECRET_KEY) {
   stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
@@ -10,6 +18,7 @@ if (process.env.STRIPE_SECRET_KEY) {
 
 module.exports = withApiGuard(async function handler(req, res) {
   const op = String(req.query.op || '').trim();
+
 
   if (op === 'create-intent') {
     if (req.method !== 'POST') return methodNotAllowed(res, ['POST']);
@@ -23,22 +32,36 @@ module.exports = withApiGuard(async function handler(req, res) {
     const bookingId = String(body.bookingId || '').trim() || null;
     if (amount <= 0) return json(res, 400, { error: 'Invalid amount' });
 
-    if (!stripe) {
-      return json(res, 200, { ok: true, mode: 'mock', paymentIntentId: 'pi_mock_123', clientSecret: 'pi_mock_secret' });
+    // PayPal stub logic
+    if (paypal) {
+      // In real implementation, create PayPal order here
+      // Return PayPal order ID and approval link
+      return json(res, 200, {
+        ok: true,
+        mode: 'paypal',
+        paypalOrderId: 'PAYPAL_ORDER_STUB_123',
+        approvalUrl: 'https://www.sandbox.paypal.com/checkoutnow?token=PAYPAL_ORDER_STUB_123'
+      });
     }
 
-    const intent = await stripe.paymentIntents.create({
-      amount,
-      currency,
-      automatic_payment_methods: { enabled: true },
-      metadata: { bookingId: bookingId || '', userId: user.user_id }
-    });
+    // Stripe fallback (legacy)
+    if (stripe) {
+      const intent = await stripe.paymentIntents.create({
+        amount,
+        currency,
+        automatic_payment_methods: { enabled: true },
+        metadata: { bookingId: bookingId || '', userId: user.user_id }
+      });
 
-    if (hasDatabase()) {
-      await sql`insert into escrow_transactions (booking_id, stripe_payment_intent_id, amount, currency, status) values (${bookingId}, ${intent.id}, ${amount / 100}, ${currency}, 'held');`;
+      if (hasDatabase()) {
+        await sql`insert into escrow_transactions (booking_id, stripe_payment_intent_id, amount, currency, status) values (${bookingId}, ${intent.id}, ${amount / 100}, ${currency}, 'held');`;
+      }
+
+      return json(res, 200, { ok: true, paymentIntentId: intent.id, clientSecret: intent.client_secret });
     }
 
-    return json(res, 200, { ok: true, paymentIntentId: intent.id, clientSecret: intent.client_secret });
+    // Mock fallback
+    return json(res, 200, { ok: true, mode: 'mock', paymentIntentId: 'pi_mock_123', clientSecret: 'pi_mock_secret' });
   }
 
   if (op === 'webhook') {

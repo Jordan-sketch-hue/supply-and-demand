@@ -18,7 +18,7 @@
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <h1 class="text-4xl font-bold text-midnight reveal">Supplier Onboarding System</h1>
-      <p class="text-slate-600 mt-3 max-w-3xl reveal">Eight-step activation flow built for trust, speed, and repeat conversions from active demand streams.</p>
+      <p class="text-slate-600 mt-3 max-w-3xl reveal">Easily onboard and get paid via <span class="font-semibold text-blue-700">PayPal</span>. Eight-step activation flow built for trust, speed, and repeat conversions from active demand streams.</p>
 
       <div class="grid lg:grid-cols-2 gap-6 mt-8">
         <section class="bg-white rounded-2xl p-6 border border-slate-100 reveal">
@@ -50,11 +50,16 @@
             <input class="rounded-xl px-4 py-3 bg-white/10 border border-white/20" placeholder="Primary category" />
             <input class="rounded-xl px-4 py-3 bg-white/10 border border-white/20" placeholder="Service city" />
             <input class="rounded-xl px-4 py-3 bg-white/10 border border-white/20" placeholder="Service radius (km)" />
+            <input class="rounded-xl px-4 py-3 bg-white/10 border border-white/20" placeholder="PayPal email for payouts" />
             <div class="flex items-center gap-2 mt-2">
               <input type="checkbox" id="commission" />
-              <label for="commission">I agree to the platform commission structure.</label>
+              <label for="commission">I agree to the platform commission structure and PayPal payout terms.</label>
             </div>
             <button type="button" class="bg-white text-midnight rounded-full px-5 py-3 font-semibold mt-2">Start Verification</button>
+            <div class="flex items-center gap-2 mt-4">
+              <img src="../assets/img/paypal-mark.svg" alt="PayPal" class="h-6" />
+              <span class="text-xs text-blue-200">All supplier payouts are processed via PayPal.</span>
+            </div>
           </div>
         </section>
       </div>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Supply & Demand</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+  <body>
+    <header class="bg-midnight text-white border-b border-white/10">
+      <nav class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+        <a href="../index.html" class="brand-font font-bold">SUPPLY & DEMAND</a>
+        <a href="./pricing.html" class="text-sm">Pricing</a>
+      </nav>
+    </header>
+
+    <main class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <h1 class="text-4xl font-bold text-midnight reveal">Contact Us</h1>
+      <p class="text-slate-600 mt-3 reveal">For all inquiries, leads, and support, use the form below or contact us directly via WhatsApp or email.</p>
+      <form id="contactForm" class="bg-white rounded-2xl p-6 border border-slate-100 mt-8 grid gap-4">
+        <input name="name" required class="rounded-xl px-4 py-3 bg-slate-50 border border-slate-200" placeholder="Your Name" />
+        <input name="email" required type="email" class="rounded-xl px-4 py-3 bg-slate-50 border border-slate-200" placeholder="Your Email" />
+        <input name="phone" class="rounded-xl px-4 py-3 bg-slate-50 border border-slate-200" placeholder="Your Phone" />
+        <input name="service" class="rounded-xl px-4 py-3 bg-slate-50 border border-slate-200" placeholder="Service Requested" />
+        <textarea name="message" required class="rounded-xl px-4 py-3 bg-slate-50 border border-slate-200" placeholder="Message"></textarea>
+        <button type="submit" class="bg-midnight text-white rounded-full px-5 py-3 font-semibold">Send Message</button>
+      </form>
+      <div class="mt-6 flex gap-4 items-center">
+        <a href="https://wa.me/16582182282" class="flex items-center gap-2 bg-green-100 text-green-900 px-4 py-2 rounded-full font-medium"><img src="../assets/img/whatsapp.svg" class="h-5" alt="WhatsApp" />Contact via WhatsApp</a>
+        <a href="mailto:global.jsuprememarketing@gmail.com" class="flex items-center gap-2 bg-blue-100 text-blue-900 px-4 py-2 rounded-full font-medium"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12H8m8 0a4 4 0 11-8 0 4 4 0 018 0z" /></svg>Email Us</a>
+      </div>
+      <script>
+        document.getElementById('contactForm').onsubmit = async function(e) {
+          e.preventDefault();
+          const form = e.target;
+          const data = Object.fromEntries(new FormData(form));
+          const res = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+          if (res.ok) {
+            form.reset();
+            alert('Thank you! We will contact you soon.');
+          } else {
+            alert('There was an error. Please try again.');
+          }
+        };
+      </script>
+    </main>
+    <script type="module" src="../assets/js/main.js"></script>
+  </body>
+</html>
